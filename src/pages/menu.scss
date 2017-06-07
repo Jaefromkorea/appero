@@ -1,0 +1,16 @@
+page-menu {
+  .select-qty {
+    margin-right: 0.5em;
+  }
+  
+  .align-center {
+    display: -webkit-flex; /* Safari */
+    -webkit-align-items: center; /* Safari 7.0+ */
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .checkbox {
+    margin: 6px;
+  }
+}

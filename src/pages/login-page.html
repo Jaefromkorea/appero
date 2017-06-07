@@ -1,0 +1,49 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+</ion-header>
+
+
+<ion-content padding class="card-background-page">
+
+  <img src="assets/img/appero-transparent-logo.png" class="logo-login" >
+  
+  <ion-card>
+  <ion-card-content>
+  <form class="card-content-a">
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label color="appero">E-mail</ion-label>
+        <ion-input [(ngModel)]="email" type="email" name="email"></ion-input><!--pattern="[^@]+\.[^@\.]+@[^@\.]+\.[^@\.]+"-->
+      </ion-item>
+      <ion-item>
+        <ion-label color="appero">Password</ion-label>
+        <ion-input [(ngModel)]="password" name="password" type="password"></ion-input>
+      </ion-item>
+      <!--<ion-item>
+        <ion-label style="white-space: normal">Log in as a bartender</ion-label>
+        <ion-checkbox color="appero" [(ngModel)]="bar_checked" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+      </ion-item>-->
+    </ion-list>
+    <div>
+      <button ion-button block (click)="login()"  type="submit" [disabled]="!email || !password">Login</button>
+      <span class="align-center"><ion-checkbox class="checkbox" [(ngModel)]="remember" [ngModelOptions]="{standalone: true}"></ion-checkbox> Remember</span>
+    </div>
+  </form>
+  </ion-card-content>
+  </ion-card>
+  
+  <p class="forgot-password"><a href="{{reset_pwd}}">Forgot password</a></p>
+  
+  <div text-center>
+    <button ion-button (click)="launchSignup()" icon-left outline>
+      <ion-icon name="person-add"></ion-icon>
+      Create New Account
+    </button>
+  </div>
+  
+</ion-content>

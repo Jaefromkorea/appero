@@ -1,0 +1,50 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Signup</ion-title>
+  </ion-navbar>
+  
+</ion-header>
+
+
+<ion-content padding>
+
+  <form (ngSubmit)="register()" #registerForm="ngForm">
+    <ion-row class="account-form">
+        <ion-col>
+            <ion-list inset>
+ 
+                <ion-item>
+                    <ion-label><ion-icon name="person"></ion-icon></ion-label>
+                    <ion-input [(ngModel)]="username" placeholder="Username" name="username" type="text" required></ion-input>
+                </ion-item>
+ 
+                <ion-item>
+                    <ion-label><ion-icon name="mail"></ion-icon></ion-label>
+                    <ion-input [(ngModel)]="email" placeholder="Email" name="email" type="email" required></ion-input>
+                </ion-item>
+ 
+                <ion-item>
+                    <ion-label><ion-icon name="lock"></ion-icon></ion-label>
+                    <ion-input [(ngModel)]="password" placeholder="Password" name="password" type="password" required></ion-input>
+                </ion-item>
+                
+                <ion-item>
+                  <ion-label style="white-space: normal">I confirm that I have reached the legal drinking age</ion-label>
+                  <ion-checkbox [(ngModel)]="major" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+                </ion-item>
+ 
+            </ion-list>
+ 
+            <button ion-button block class="continue-button" type="submit" [disabled]="!registerForm.form.valid || !major">Register</button>
+ 
+        </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

@@ -1,0 +1,140 @@
+<!--
+  Generated template for the BarHomepage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton="true">
+    <ion-title>BarHomepage</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logout()"><ion-icon name="power"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+  
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="state">
+      <ion-segment-button value="pending">
+        <ion-icon name="clipboard"></ion-icon>
+        Pending
+        <ion-badge *ngIf="pending_orders.length !== 0">{{pending_orders.length}}</ion-badge>
+      </ion-segment-button>
+      <ion-segment-button value="ready">
+        <ion-icon name="checkmark"></ion-icon>
+        Ready
+        <ion-badge *ngIf="ready_orders.length !== 0">{{ready_orders.length}}</ion-badge>
+      </ion-segment-button>
+      <ion-segment-button value="finished">
+        <ion-icon name="done-all"></ion-icon>
+        History
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  
+</ion-header>
+
+
+<ion-content padding>
+  
+  <div [ngSwitch]="state">
+    
+    
+    <div *ngSwitchCase="'pending'">
+    
+      <h2>New orders</h2>
+      <div *ngIf="pending_orders.length === 0">Waiting for new orders...</div>
+
+      <ion-grid>
+        <ion-row>
+      
+        <template ngFor let-order [ngForOf]="pending_orders" let-j="index">
+          
+          <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+            <ion-card>
+              <ion-list no-lines>
+                <ion-list-header>{{order.username}}'s order</ion-list-header>
+            
+                <ion-item *ngFor="let item of order">
+                  {{item.quantity}} {{item.name}}
+                </ion-item>
+              </ion-list>
+        
+              <div class="button-container">
+                <button ion-button block (click)="notifyCustomer(j)" color="secondary">Ready</button>
+              </div>
+            </ion-card>
+          </ion-col>
+          
+        </template>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    
+    <div *ngSwitchCase="'ready'">
+    
+      <h2>Orders to be retrieved</h2>
+      <div *ngIf="ready_orders.length === 0">No order is waiting to be retrieved.</div>
+
+      <ion-grid>
+        <ion-row>
+      
+        <template ngFor let-order [ngForOf]="ready_orders" let-j="index">
+          
+          <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+            <ion-card>
+              <ion-list no-lines>
+                <ion-list-header>{{order.username}}'s order</ion-list-header>
+            
+                <ion-item *ngFor="let item of order">
+                  {{item.quantity}} {{item.name}}
+                </ion-item>
+              </ion-list>
+        
+              <div class="button-container">
+                <button ion-button block (click)="orderPaid(j)" color="secondary">Paid</button>
+              </div>
+            </ion-card>
+          </ion-col>
+          
+        </template>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    
+    <div *ngSwitchCase="'finished'">
+    
+      <h2>History of orders</h2>
+      <div *ngIf="finished_orders.length === 0">No order has been finalized so far.</div>
+
+      <ion-grid>
+        <ion-row>
+      
+        <template ngFor let-order [ngForOf]="finished_orders" let-j="index">
+          
+          <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+            <ion-card>
+              <ion-list no-lines>
+                <ion-list-header>{{order.username}}'s order</ion-list-header>
+            
+                <ion-item *ngFor="let item of order">
+                  {{item.quantity}} {{item.name}}
+                </ion-item>
+              </ion-list>
+            </ion-card>
+          </ion-col>
+          
+        </template>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+    
+  </div>
+  
+</ion-content>
